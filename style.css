@@ -79,3 +79,32 @@ footer{text-align:center;padding:24px;color:var(--muted);border-top:1px solid va
 .gallery img{display:block;width:100%;height:auto}
 .gallery figcaption{padding:8px 12px;color:var(--muted)}
 .gallery figcaption b{color:var(--fg);margin-right:6px}
+/* ---- 互動遊戲 / 表單 ---- */
+.game-form{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-bottom:14px}
+.game-form.play{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;max-width:520px}
+.game-form label{display:inline-flex;align-items:center;gap:6px}
+.game-form fieldset{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;width:100%}
+.game-form legend{padding:0 8px;font-weight:700;color:var(--accent)}
+input[type=text],input[type=number],select{font:inherit;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input[type=range]{accent-color:var(--accent)}
+input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:1.1em;height:1.1em}
+.game-form button[type=submit]{background:var(--accent);border-color:var(--accent);color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.row input{flex:1;min-width:150px}
+.form-msg{min-height:1.6em;margin:8px 0 0;color:var(--muted)}
+.form-msg.ok{color:var(--ok)}.form-msg.bad{color:var(--bad)}
+.sentence{font-size:1.8rem;font-weight:700;text-align:center;margin:8px 0}
+.sentence .blank{display:inline-block;min-width:1.6em;border-bottom:3px solid var(--accent);color:var(--accent)}
+.radios{border:0;padding:0;margin:8px 0 12px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.radios label{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-size:1.3rem}
+.radios label:has(input:checked){background:var(--accent-2);border-color:var(--accent)}
+.radios label.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.radios label.bad{background:var(--bad);color:#fff;border-color:var(--bad)}
+[hidden]{display:none!important}
+.cloud-badge{font-size:.75rem;font-weight:500;padding:2px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);vertical-align:middle;margin-left:8px}
+.cloud-badge.online{color:var(--ok);border-color:var(--ok)}
+.board-list{width:100%;margin:6px 0 0;padding-left:1.6em}
+.board-list li{padding:2px 0}
+.board-list .who{font-weight:700}
+.board-list .pts{float:right;color:var(--accent);font-weight:700}

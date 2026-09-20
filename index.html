@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>日本語入門 | 日語學習網站</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="images/logo-icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,6 +17,7 @@
     <a href="#vocab">單字卡</a>
     <a href="#phrases">常用會話</a>
     <a href="#grammar">文法入門</a>
+    <a href="#games">互動遊戲</a>
     <a href="#quiz">小測驗</a>
   </nav>
 </header>
@@ -82,6 +85,94 @@
     <div id="grammar-list"></div>
   </section>
 
+  <section id="games">
+    <h2>互動遊戲 <small class="cloud-badge" id="cloud-badge">連線中…</small></h2>
+
+    <form id="profile-form" class="game-form profile">
+      <fieldset>
+        <legend>玩家資料</legend>
+        <label>暱稱 <input type="text" name="nick" maxlength="12" placeholder="例如：小明" autocomplete="nickname"></label>
+        <label>程度
+          <select name="level">
+            <option value="零基礎">零基礎</option>
+            <option value="N5">N5 入門</option>
+            <option value="N4">N4 初級</option>
+          </select>
+        </label>
+        <label>每日目標 <input type="range" name="goal" min="5" max="50" step="5" value="10"> <output>10</output> 個單字</label>
+        <label class="check"><input type="checkbox" name="sound" checked> 開啟發音</label>
+        <button type="submit">儲存</button>
+        <span class="form-msg" id="profile-msg" role="status"></span>
+      </fieldset>
+    </form>
+
+    <div class="tabs" id="game-tabs">
+      <button data-g="typing" class="active">⌨️ 假名打字</button>
+      <button data-g="particle">✏️ 助詞填空</button>
+      <button data-g="number">👂 聽數字</button>
+    </div>
+
+    <div class="game-panel" id="g-typing">
+      <form id="typing-setup" class="game-form">
+        <label>文字 <select name="type"><option value="hira">平假名</option><option value="kata">片假名</option><option value="mix">混合</option></select></label>
+        <label>題數 <input type="range" name="count" min="5" max="20" value="10"> <output>10</output></label>
+        <button type="submit">開始</button>
+      </form>
+      <form id="typing-play" class="game-form play" hidden autocomplete="off">
+        <div class="q-meta"><span id="t-progress"></span><span id="t-score"></span></div>
+        <div class="q-prompt" id="t-prompt"></div>
+        <div class="row"><input type="text" name="ans" placeholder="輸入羅馬拼音，例如 ka" autocapitalize="none" spellcheck="false" required><button type="submit">送出</button></div>
+        <p class="form-msg" id="t-msg" role="status"></p>
+      </form>
+    </div>
+
+    <div class="game-panel" id="g-particle" hidden>
+      <form id="particle-setup" class="game-form">
+        <label class="check"><input type="checkbox" name="hint" checked> 顯示中文提示</label>
+        <button type="submit">開始（8 題）</button>
+      </form>
+      <form id="particle-play" class="game-form play" hidden>
+        <div class="q-meta"><span id="p-progress"></span><span id="p-score"></span></div>
+        <div class="sentence" id="p-sentence"></div>
+        <p class="hint" id="p-hint"></p>
+        <fieldset class="radios" id="p-options"></fieldset>
+        <button type="submit">確定</button>
+        <p class="form-msg" id="p-msg" role="status"></p>
+      </form>
+    </div>
+
+    <div class="game-panel" id="g-number" hidden>
+      <form id="number-setup" class="game-form">
+        <label>最大數字 <input type="range" name="max" min="10" max="99" value="20"> <output>20</output></label>
+        <label class="check"><input type="checkbox" name="kana"> 顯示假名提示</label>
+        <button type="submit">開始（8 題）</button>
+      </form>
+      <form id="number-play" class="game-form play" hidden autocomplete="off">
+        <div class="q-meta"><span id="n-progress"></span><span id="n-score"></span></div>
+        <div class="q-prompt" id="n-prompt">🔊</div>
+        <div class="row"><button type="button" id="n-replay">再聽一次</button>
+          <input type="number" name="ans" min="0" max="99" placeholder="你聽到的數字" required><button type="submit">送出</button></div>
+        <p class="form-msg" id="n-msg" role="status"></p>
+      </form>
+    </div>
+    <div class="quiz-box" id="game-result" hidden></div>
+
+    <form id="board-form" class="game-form board">
+      <fieldset>
+        <legend>🏆 排行榜</legend>
+        <label>遊戲
+          <select name="game">
+            <option value="typing">假名打字</option>
+            <option value="particle">助詞填空</option>
+            <option value="number">聽數字</option>
+          </select>
+        </label>
+        <button type="submit">重新整理</button>
+        <ol class="board-list" id="board-list"><li class="hint">尚未載入</li></ol>
+      </fieldset>
+    </form>
+  </section>
+
   <section id="quiz">
     <h2>小測驗</h2>
     <div class="tabs" id="quiz-tabs">
@@ -95,6 +186,9 @@
 
 <footer>© 日本語入門 · 頑張って！加油！</footer>
 <script src="data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
+<script src="cloud.js"></script>
+<script src="games.js"></script>
 </body>
 </html>
