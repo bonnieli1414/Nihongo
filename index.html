@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>日本語入門 | 日語學習網站</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="#home">日本語<span>入門</span></a>
+  <nav id="nav">
+    <a href="#japan">認識日本</a>
+    <a href="#kana">五十音</a>
+    <a href="#vocab">單字卡</a>
+    <a href="#phrases">常用會話</a>
+    <a href="#grammar">文法入門</a>
+    <a href="#quiz">小測驗</a>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="hero">
+    <p class="hero-jp">こんにちは！</p>
+    <h1>從零開始學日語</h1>
+    <p>五十音、單字、會話、文法與測驗，一個網站全部搞定。點擊任何日文即可聽發音。</p>
+    <div class="hero-cards">
+      <a href="#kana" class="card"><b>あ</b><span>五十音</span></a>
+      <a href="#vocab" class="card"><b>語</b><span>單字卡</span></a>
+      <a href="#phrases" class="card"><b>話</b><span>常用會話</span></a>
+      <a href="#grammar" class="card"><b>文</b><span>文法入門</span></a>
+      <a href="#quiz" class="card"><b>試</b><span>小測驗</span></a>
+    </div>
+    <p class="stat" id="stat"></p>
+  </section>
+
+  <section id="japan">
+    <h2>認識日本</h2>
+    <p class="hint">點擊圖片，聽聽這些詞怎麼說。</p>
+    <div class="gallery">
+      <figure data-say="ふじさん"><img src="images/fuji.svg" alt="富士山"><figcaption><b>富士山</b> ふじさん</figcaption></figure>
+      <figure data-say="とりい"><img src="images/torii.svg" alt="鳥居"><figcaption><b>鳥居</b> とりい</figcaption></figure>
+      <figure data-say="さくら"><img src="images/sakura.svg" alt="櫻花"><figcaption><b>桜</b> さくら</figcaption></figure>
+      <figure data-say="おすし"><img src="images/sushi.svg" alt="壽司"><figcaption><b>寿司</b> おすし</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="kana">
+    <h2>五十音</h2>
+    <div class="tabs" id="kana-tabs">
+      <button data-k="hira" class="active">平假名 ひらがな</button>
+      <button data-k="kata">片假名 カタカナ</button>
+    </div>
+    <p class="hint">點擊字元聽發音，羅馬拼音顯示於下方。</p>
+    <div id="kana-grid" class="kana-grid"></div>
+  </section>
+
+  <section id="vocab">
+    <h2>單字卡</h2>
+    <div class="tabs" id="vocab-tabs"></div>
+    <div class="flash" id="flash" tabindex="0" title="點擊翻面">
+      <div class="flash-inner">
+        <div class="face front"><div class="big" id="f-jp"></div><div class="small" id="f-kana"></div></div>
+        <div class="face back"><div class="big" id="f-zh"></div></div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="f-prev">← 上一張</button>
+      <button id="f-speak">🔊 發音</button>
+      <button id="f-next">下一張 →</button>
+    </div>
+    <p class="hint" id="f-count"></p>
+  </section>
+
+  <section id="phrases">
+    <h2>常用會話</h2>
+    <div id="phrase-list" class="phrase-list"></div>
+  </section>
+
+  <section id="grammar">
+    <h2>文法入門</h2>
+    <div id="grammar-list"></div>
+  </section>
+
+  <section id="quiz">
+    <h2>小測驗</h2>
+    <div class="tabs" id="quiz-tabs">
+      <button data-q="hira" class="active">平假名</button>
+      <button data-q="kata">片假名</button>
+      <button data-q="vocab">單字</button>
+    </div>
+    <div id="quiz-box" class="quiz-box"></div>
+  </section>
+</main>
+
+<footer>© 日本語入門 · 頑張って！加油！</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
