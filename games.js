@@ -60,6 +60,7 @@ boardForm.game.onchange = loadBoard;
     else if (profile.nick) cloud.saveProfile(profile);   // 首次連線：把本機資料補傳上去
   }
   loadBoard();
+  if (typeof loadRecords === "function") loadRecords();
 })();
 
 // ---- 遊戲切換 ----
@@ -81,7 +82,11 @@ function showResult(game, score, total, extra = "", durationSec = null) {
   const key = "game-best-" + game, best = store.get(key, -1);
   const isBest = score > best;
   if (isBest) store.set(key, score);
-  cloud.saveScore(game, score, total, durationSec).then((ok) => ok && boardForm.game.value === game && loadBoard());
+  cloud.saveScore(game, score, total, durationSec).then((ok) => {
+    if (!ok) return;
+    if (boardForm.game.value === game) loadBoard();
+    if (typeof loadRecords === "function") loadRecords();
+  });
   const who = profile.nick ? `${profile.nick}，` : "";
   const msg = score === total ? "全對！すごい！" : score >= total * 0.7 ? "不錯喔！" : "再練習一次吧！";
   resultBox.hidden = false;

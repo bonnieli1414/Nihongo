@@ -18,6 +18,7 @@
     <a href="#phrases">常用會話</a>
     <a href="#grammar">文法入門</a>
     <a href="#games">互動遊戲</a>
+    <a href="#records">我的紀錄</a>
     <a href="#quiz">小測驗</a>
   </nav>
 </header>
@@ -173,6 +174,70 @@
     </form>
   </section>
 
+  <section id="records">
+    <h2>我的紀錄</h2>
+    <form id="records-form" class="game-form">
+      <label>遊戲
+        <select name="game">
+          <option value="">全部</option>
+          <option value="typing">假名打字</option>
+          <option value="particle">助詞填空</option>
+          <option value="number">聽數字</option>
+        </select>
+      </label>
+      <button type="submit">重新整理</button>
+      <span class="form-msg" id="records-msg" role="status"></span>
+    </form>
+    <div class="table-wrap">
+      <table class="records">
+        <thead><tr><th>時間</th><th>遊戲</th><th>成績</th><th>用時</th><th>備註</th><th>操作</th></tr></thead>
+        <tbody id="records-body"><tr><td colspan="6" class="hint">載入中…</td></tr></tbody>
+      </table>
+    </div>
+    <div class="game-form danger-zone">
+      <button type="button" id="clear-scores" class="danger">清空我的成績</button>
+      <button type="button" id="delete-profile" class="danger">刪除我的玩家資料</button>
+    </div>
+
+    <details id="admin-box" class="admin-box">
+      <summary>🔧 管理者模式 <small class="cloud-badge" id="role-badge">群組：使用者</small></summary>
+      <form id="admin-login" class="game-form">
+        <label>Email <input type="email" name="email" autocomplete="username" required></label>
+        <label>密碼 <input type="password" name="password" autocomplete="current-password" required></label>
+        <button type="submit">登入</button>
+        <span class="form-msg" id="admin-login-msg" role="status"></span>
+      </form>
+      <div id="admin-panel" hidden>
+        <div class="game-form">
+          <span id="admin-who" class="hint"></span>
+          <button type="button" id="admin-logout">登出管理者</button>
+        </div>
+        <div class="tabs" id="admin-tabs">
+          <button data-a="scores" class="active">全部成績</button>
+          <button data-a="players">玩家資料</button>
+        </div>
+        <form id="admin-filter" class="game-form">
+          <label>遊戲
+            <select name="game">
+              <option value="">全部</option>
+              <option value="typing">假名打字</option>
+              <option value="particle">助詞填空</option>
+              <option value="number">聽數字</option>
+            </select>
+          </label>
+          <button type="submit">重新整理</button>
+        </form>
+        <p class="form-msg" id="admin-msg" role="status"></p>
+        <div class="table-wrap">
+          <table class="records">
+            <thead id="admin-head"></thead>
+            <tbody id="admin-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+  </section>
+
   <section id="quiz">
     <h2>小測驗</h2>
     <div class="tabs" id="quiz-tabs">
@@ -190,5 +255,7 @@
 <script src="app.js"></script>
 <script src="cloud.js"></script>
 <script src="games.js"></script>
+<script src="records.js"></script>
+<script src="admin.js"></script>
 </body>
 </html>
